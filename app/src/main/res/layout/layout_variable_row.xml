@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:background="@drawable/variable_background">
+
+    <TableRow>
+
+        <ImageView
+            android:adjustViewBounds="true"
+            android:maxWidth="25dp"
+            android:maxHeight="25dp"
+            android:layout_gravity="center"
+            android:id="@+id/candy_icon"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:text="Candies" />
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="65dp"
+            android:layout_gravity="center_vertical"
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Pokedex?" />
+
+    </TableRow>
+    <TableRow >
+
+        <ImageView
+            android:adjustViewBounds="true"
+            android:maxWidth="64dp"
+            android:maxHeight="64dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/pokemon_icon"
+            android:src="@drawable/bulbasaur"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/pokemon_name"
+            android:text="Bulbasaur" />
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="65dp"
+            android:layout_gravity="center_vertical"
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:maxWidth="65dp"/>
+        <CheckBox
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center"
+            android:id="@+id/pokedex_checkbox" />
+
+    </TableRow>
+</TableLayout>
