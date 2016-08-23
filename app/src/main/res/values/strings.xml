@@ -3,4 +3,6 @@
     <string name="hint_search">Search Pokemon</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_pokemon_search">PokemonSearchActivity</string>
+    <string name="in_pokedex">Pokedex?</string>
+    <string name="candies">Candies</string>
 </resources>

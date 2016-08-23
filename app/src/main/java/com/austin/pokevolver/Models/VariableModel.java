@@ -9,36 +9,41 @@ import java.util.ArrayList;
  * Created by austin on 8/19/16.
  */
 public class VariableModel {
+    public static final int MAX_FAMILY_SIZE = 4;
     public int totalPokemon, totalEvolutions, totalExperience;
-    private int id, candyCount, candiesToEvolve;
+    private int candyCount, candiesToEvolve;
     private int[] pokemonCount;
     private String[] pokemonNames;
     private Uri[] pokemonIcons;
-    private boolean inPokedex;
+    private boolean[] inPokedex;
     private Uri candyIcon;
+    private long id;
 
     public VariableModel(int pokemonId) {
-        candiesToEvolve = -1;
-        pokemonCount = new int[3];
-        pokemonIcons = new Uri[3];
-        pokemonNames = new String[3];
+        candiesToEvolve = Integer.MAX_VALUE;
+        pokemonCount = new int[MAX_FAMILY_SIZE];
+        pokemonIcons = new Uri[MAX_FAMILY_SIZE];
+        pokemonNames = new String[MAX_FAMILY_SIZE];
+        inPokedex = new boolean[MAX_FAMILY_SIZE];
+        candyCount = 0;
         hydrateModel(pokemonId);
-        calculateExperience();
+        id = DataBase.generateID();
     }
 
     private void hydrateModel(int pokemonId) {
         Cursor c = DataBase.db.queryFamilyById(pokemonId);
-        if (c.getCount() > 0 && c.getCount() < 4) {
+        if (c.getCount() > 0 && c.getCount() <= MAX_FAMILY_SIZE) {
             totalPokemon = 0;
             while (c.moveToNext()) {
                 pokemonIcons[totalPokemon] = Uri.parse(c.getString(DataBase.POKEMON_ICON));
                 pokemonNames[totalPokemon] = c.getString(DataBase.NAME);
-                if (totalPokemon == 1) {
-                    inPokedex = c.getInt(DataBase.IN_POKEDEX) == 1;
-                } else if (totalPokemon == 0) {
-                    candyCount = c.getInt(DataBase.CANDIES_TO_EVOLVE);
+                inPokedex[totalPokemon] = c.getInt(DataBase.IN_POKEDEX) == 1;
+                if (totalPokemon == 0) {
+                    int newCandiesToEvolve = c.getInt(DataBase.CANDIES_TO_EVOLVE);
+                    if (newCandiesToEvolve < candiesToEvolve) {
+                        candiesToEvolve = newCandiesToEvolve;
+                    }
                     candyIcon = Uri.parse(c.getString(DataBase.CANDY_ICON));
-                    id = c.getInt(DataBase.ID);
                 }
 
                 totalPokemon++;
@@ -46,25 +51,46 @@ public class VariableModel {
         }
     }
 
-    public void calculateExperience() {
+    public void calculateExperience(boolean includeTransfers) {
 
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Uri getCandyIcon() {
         return candyIcon;
     }
 
-    public String[] getPokemonNames() {
-        return pokemonNames;
+    public String getPokemonName(int index) {
+        return pokemonNames[index];
     }
 
-    public Uri[] getPokemonIcons() {
-        return pokemonIcons;
+    public Uri getPokemonIcon(int index) {
+        return pokemonIcons[index];
     }
 
-    public void setInPokedex(boolean inPokedex) {
-        this.inPokedex = inPokedex;
-        DataBase.db.updatePokemon(pokemonNames[1], (inPokedex) ? 1 : 0);
+    public boolean getInPokedex(int index) {
+        return inPokedex[index];
+    }
+
+    public String getCandyCountText() {
+        return ((candyCount == 0) ? "" : Integer.toString(candyCount));
+    }
+
+    public int getPokemonCount(int index) {
+        return pokemonCount[index];
+    }
+
+    public String getPokemonCountText(int index) {
+        int count = getPokemonCount(index);
+        return ((count == 0) ? "" : Integer.toString(count));
+    }
+
+    public void setInPokedex(int stage, boolean inPokedex) {
+        this.inPokedex[stage] = inPokedex;
+        DataBase.db.updatePokemon(pokemonNames[stage], (inPokedex) ? 1 : 0);
     }
 
     public void setCandyCount(int candyCount) {
