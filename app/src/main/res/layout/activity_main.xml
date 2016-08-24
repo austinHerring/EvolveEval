@@ -1,64 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/windowBackground">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/colorSecondary">
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="@color/colorSecondary">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Transfer candies while evolving"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
 
-            <android.support.v7.widget.AppCompatCheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/dirty_white"
+                    android:id="@+id/checkbox_transfer_option"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="18sp"
+                    android:text="@string/transfer_option"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="@string/evolutions"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/yellow"
+                        android:textSize="20sp"
+                        android:id="@+id/total_evolutions"
+                        android:text="@string/default_value"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginStart="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="@string/exp"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/yellow"
+                        android:textSize="20sp"
+                        android:id="@+id/total_exp"
+                        android:text="@string/default_value"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <TextView
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:orientation="vertical"
+          android:background="@color/black"/>
+
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Total Experience: "/>
+            android:layout_height="wrap_content"
+            android:id="@+id/variables"
+            android:divider="@android:color/transparent"/>
 
-    </LinearLayout>
+      </LinearLayout>
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:orientation="vertical"
-      android:background="@color/black"/>
+      <ListView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/suggestions"
+          android:visibility="gone"/>
 
-    <ListView
-        android:layout_width="match_parent"
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/launch_screen"-->
+        <!--android:background="@color/windowBackground">-->
+        <!---->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" -->
+            <!--android:text="Main Message"/>-->
+        <!---->
+    <!--</RelativeLayout>-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonCalculate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/variables"
-        android:divider="@android:color/transparent"/>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/calculate"/>
 
-  </LinearLayout>
-
-  <ListView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/suggestions"
-      android:visibility="gone"/>
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

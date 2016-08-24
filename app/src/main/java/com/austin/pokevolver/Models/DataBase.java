@@ -3,7 +3,10 @@ package com.austin.pokevolver.Models;
 import com.austin.pokevolver.DatabaseHelper;
 
 /**
- * Created by austin on 8/19/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * A model that holds the static database interaction with SQLite and some final Column names.
  */
 public class DataBase {
     private static long idAssignment = 1;

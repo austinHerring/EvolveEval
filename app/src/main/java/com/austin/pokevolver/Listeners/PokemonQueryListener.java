@@ -13,7 +13,11 @@ import com.austin.pokevolver.R;
 import java.util.ArrayList;
 
 /**
- * Created by austin on 8/19/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * Listens to the search bar and filters the suggestion list for the user until an evolution line
+ * is selected.
  */
 public class PokemonQueryListener implements SearchView.OnQueryTextListener {
 

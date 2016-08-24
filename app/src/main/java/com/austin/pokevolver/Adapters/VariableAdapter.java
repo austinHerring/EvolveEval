@@ -23,7 +23,10 @@ import com.austin.pokevolver.R;
 import java.util.ArrayList;
 
 /**
- * Created by austin on 8/19/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * Formats the list of variables - to be used in the equation model - into an easy to use UI
  */
 public class VariableAdapter extends ArrayAdapter<VariableModel> {
 

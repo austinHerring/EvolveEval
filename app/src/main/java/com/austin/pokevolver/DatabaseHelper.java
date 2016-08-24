@@ -9,7 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.austin.pokevolver.Models.DataBase;
 
 /**
- * Created by austin on 8/17/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * This class handles interactions with the Pokemon stored in the SQLite database. It hydrates the
+ * table once on install.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "PokemonModel.db";

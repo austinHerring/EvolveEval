@@ -5,4 +5,8 @@
     <string name="title_activity_pokemon_search">PokemonSearchActivity</string>
     <string name="in_pokedex">Pokedex?</string>
     <string name="candies">Candies</string>
+    <string name="transfer_option">Transfer pokemon while evolving</string>
+    <string name="evolutions">Evolutions</string>
+    <string name="exp">Experience With Egg</string>
+    <string name="default_value">0</string>
 </resources>

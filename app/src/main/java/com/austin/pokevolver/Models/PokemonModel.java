@@ -3,7 +3,10 @@ package com.austin.pokevolver.Models;
 import android.net.Uri;
 
 /**
- * Created by austin on 8/16/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * Simple POJO Class for a single Pokemon
  */
 public class PokemonModel {
     private String name;

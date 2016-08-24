@@ -6,6 +6,9 @@
     <color name="navigationBarControl">#3F51B5</color>
     <color name="windowBackground">#d598b9f2</color>
     <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="dirty_white">#dfdfdf</color>
+    <color name="yellow">#ECD444</color>
     <color name="colorAccent">#BF1363</color>
     <color name="suggestions">#e3bbc5ff</color>
 </resources>

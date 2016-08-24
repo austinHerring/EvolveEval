@@ -3,10 +3,13 @@ package com.austin.pokevolver.Models;
 import android.database.Cursor;
 import android.net.Uri;
 
-import java.util.ArrayList;
-
 /**
- * Created by austin on 8/19/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * A model that holds a single 'variable.' A variable is a given Pokemon evolution line and the
+ * numbers that go along with it. Such as the number of occurrences of each pokemon and candies to
+ * evolve. It plays a larger role when calculating the total deliverables.
  */
 public class VariableModel {
     public static final int MAX_FAMILY_SIZE = 4;

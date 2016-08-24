@@ -22,7 +22,10 @@ import com.austin.pokevolver.Models.VariableModel;
 import java.util.ArrayList;
 
 /**
- * Created by austin on 8/18/16.
+ * @author Austin Herring
+ * @version 1.0
+ *
+ * Formats the list of Pokemon - from the SQLite Database - into a suggestion list.
  */
 public class PokemonSuggestionAdapter extends ArrayAdapter<PokemonModel> {
 
