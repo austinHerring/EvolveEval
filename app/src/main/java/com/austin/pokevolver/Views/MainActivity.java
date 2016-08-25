@@ -1,4 +1,4 @@
-package com.austin.pokevolver;
+package com.austin.pokevolver.Views;
 
 import android.app.Activity;
 import android.app.SearchManager;
@@ -15,9 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.austin.pokevolver.Adapters.VariableAdapter;
+import com.austin.pokevolver.Helpers.DatabaseHelper;
 import com.austin.pokevolver.Listeners.PokemonQueryListener;
 import com.austin.pokevolver.Models.DataBase;
 import com.austin.pokevolver.Models.EquationModel;
+import com.austin.pokevolver.R;
 
 public class MainActivity extends AppCompatActivity{
     private EquationModel model;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         model = new EquationModel();
-        DataBase.db = new DatabaseHelper(this);
         inSuggestMode = false;
         listOfSuggestions = (ListView) findViewById(R.id.suggestions);
         listOfVariables = (ListView) findViewById(R.id.variables);
@@ -78,9 +79,12 @@ public class MainActivity extends AppCompatActivity{
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EquationModel.evaluate();
-                evolutionsText.setText(EquationModel.evolutions);
-                experienceText.setText(EquationModel.exp);
+                View parent = (View)v.getParent();
+                if (parent != null) {
+                    EquationModel.evaluate();
+                    evolutionsText.setText(Integer.toString(EquationModel.evolutions));
+                    experienceText.setText(Integer.toString(EquationModel.exp));
+                }
             }
         });
     }

@@ -13,9 +13,8 @@ public class EquationModel {
     public static int evolutions, exp;
     public static ArrayList<VariableModel> variables;
     private static boolean transferOption;
-
-    //floor(x-1)/11
-    //floor(x-2)/10
+    private static final int EXP_OLD = 500;
+    private static final int EXP_NEW = 1000;
 
     public EquationModel() {
         variables = new ArrayList<>();
@@ -24,11 +23,18 @@ public class EquationModel {
     }
 
     public static void evaluate() {
-        if (transferOption) {
+        int oldEvolutions = 0;
+        int newEvolutions = 0;
+        int adjustment = (transferOption) ? 2 : 1;
 
-        } else {
-
+        for (VariableModel variable : variables) {
+            int[] e = variable.calculateOldAndNewEvolutions(adjustment);
+            oldEvolutions += e[0];
+            newEvolutions += e[1];
         }
+
+        evolutions = oldEvolutions + newEvolutions;
+        exp = (oldEvolutions * EXP_OLD + newEvolutions * EXP_NEW) << 1;
     }
 
     public static void setTransferOption(boolean transferOption) {

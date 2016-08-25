@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.support.v7.widget.SearchView;
 import android.view.View;
 
-import com.austin.pokevolver.MainActivity;
+import com.austin.pokevolver.Views.MainActivity;
 import com.austin.pokevolver.Models.DataBase;
 import com.austin.pokevolver.Models.PokemonModel;
 import com.austin.pokevolver.Adapters.PokemonSuggestionAdapter;

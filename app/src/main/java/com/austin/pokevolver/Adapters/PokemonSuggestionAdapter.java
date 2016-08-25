@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.austin.pokevolver.MainActivity;
+import com.austin.pokevolver.Views.MainActivity;
 import com.austin.pokevolver.Models.EquationModel;
 import com.austin.pokevolver.Models.PokemonModel;
 import com.austin.pokevolver.R;

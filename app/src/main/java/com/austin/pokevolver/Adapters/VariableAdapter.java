@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.austin.pokevolver.MainActivity;
+import com.austin.pokevolver.Views.MainActivity;
 import com.austin.pokevolver.Models.EquationModel;
 import com.austin.pokevolver.Models.VariableModel;
 import com.austin.pokevolver.R;

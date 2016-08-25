@@ -1,4 +1,4 @@
-package com.austin.pokevolver;
+package com.austin.pokevolver.Helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.austin.pokevolver.Models.DataBase;
+import com.austin.pokevolver.R;
 
 /**
  * @author Austin Herring
@@ -25,8 +26,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_5 = "IN_POKEDEX";
     private static final String COL_6 = "POKEMON_ICON";
     private static final String COL_7 = "CANDY_ICON";
+    private static final String COL_8 = "EVOLUTION_INDEX";
+    private static final String COL_9 = "IS_MIN_EVOLUTION";
     private static String URI_START;
     private SQLiteDatabase db;
+
+
+    private static final String TABLE_NAME_2 = "preference_table";
+    private static final String COL_1P = "_ID";
+    private static final String COL_2P = "LAUNCH_PREF";
 
 
     public DatabaseHelper(Context context) {
@@ -43,10 +51,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_4 + " INTEGER, "
                 + COL_5 + " INTEGER, "
                 + COL_6 + " TEXT, "
-                + COL_7 + " TEXT)"
+                + COL_7 + " TEXT, "
+                + COL_8 + " INTEGER, "
+                + COL_9 + " INTEGER)"
         );
+
+        db.execSQL("CREATE TABLE " + TABLE_NAME_2 + "("
+                + COL_1P + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_2P + " INTEGER)"
+        );
+
         this.db = db;
-        fillTable();
+        fillTables();
     }
 
     @Override
@@ -55,15 +71,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private void fillTable() {
-        addPokemon("Bulbasaur", 25, 1, URI_START + R.drawable.bulbasaur, URI_START + R.drawable.bulbasaur_candy);
-        addPokemon("Ivysaur", 100, 1, URI_START + R.drawable.ivysaur, URI_START + R.drawable.bulbasaur_candy);
-        addPokemon("Venusaur", -1, 1, URI_START + R.drawable.venusaur, URI_START + R.drawable.bulbasaur_candy);
-        addPokemon("Charmander", 25, 2, URI_START + R.drawable.charmander, URI_START + R.drawable.charmander_candy);
-        addPokemon("Charmeleon", 100, 2, URI_START + R.drawable.charmeleon, URI_START + R.drawable.charmander_candy);
+    private void fillTables() {
+        addPreference(0);
+        addPokemon("Bulbasaur", 25, 1, URI_START + R.drawable.bulbasaur, URI_START + R.drawable.bulbasaur_candy, 0, 0);
+        addPokemon("Ivysaur", 100, 1, URI_START + R.drawable.ivysaur, URI_START + R.drawable.bulbasaur_candy, 1, 1);
+        addPokemon("Venusaur", -1, 1, URI_START + R.drawable.venusaur, URI_START + R.drawable.bulbasaur_candy, 2, 0);
+        addPokemon("Charmander", 25, 2, URI_START + R.drawable.charmander, URI_START + R.drawable.charmander_candy, 0, 0);
+        addPokemon("Charmeleon", 100, 2, URI_START + R.drawable.charmeleon, URI_START + R.drawable.charmander_candy, 1, 1);
     }
 
-    public boolean addPokemon(String name, int candiesToEvolve, int evolutionId, String pokemonIcon, String candyIcon) {
+    private boolean addPokemon(
+            String name,
+            int candiesToEvolve,
+            int evolutionId,
+            String pokemonIcon,
+            String candyIcon,
+            int evolutionIndex,
+            int isMinEvolution)
+    {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, candiesToEvolve);
@@ -71,7 +96,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_5, 0);
         contentValues.put(COL_6, pokemonIcon);
         contentValues.put(COL_7, candyIcon);
+        contentValues.put(COL_8, evolutionIndex);
+        contentValues.put(COL_9, isMinEvolution);
         return db.insert(TABLE_NAME, null, contentValues) != -1;
+    }
+
+    private boolean addPreference(int hideLaunchMessage) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2P, hideLaunchMessage);
+        return db.insert(TABLE_NAME_2, null, contentValues) != -1;
     }
 
     public Cursor queryPokemonByName(String query) {
@@ -104,8 +137,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put(COL_5, inPokedex);
             contentValues.put(COL_6, cursor.getString(DataBase.POKEMON_ICON));
             contentValues.put(COL_7, cursor.getString(DataBase.CANDY_ICON));
+            contentValues.put(COL_8, cursor.getInt(DataBase.EVOLUTION_INDEX));
+            contentValues.put(COL_9, cursor.getInt(DataBase.MIN_EVOLUTION));
             cursor.close();
             return db.update(TABLE_NAME, contentValues, COL_2 + " = ?", new String[] { name }) > 0;
+        }
+        return false;
+    }
+
+    public boolean hideLaunch() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_2, null);
+        cursor.moveToNext();
+        return cursor.getInt(DataBase.LAUNCH_PREF) == 1;
+    }
+
+    public boolean setHideLaunchPreference() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_2, null);
+        if (cursor.getCount() == 1) {
+            cursor.moveToNext();
+            String id = cursor.getString(DataBase.ID);
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COL_1P, id);
+            contentValues.put(COL_2P, 1);
+            cursor.close();
+            return db.update(TABLE_NAME_2, contentValues, COL_1P + " = ?", new String[] { id }) > 0;
         }
         return false;
     }
