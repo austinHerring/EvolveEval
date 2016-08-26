@@ -60,10 +60,14 @@ public class VariableModel {
     }
 
     public int[] calculateOldAndNewEvolutions(int adjustment) {
-        int[] oldNewEvolutionCount = new int[2];
-        int basicCount = pokemonCount[0];
+        int[] oldNewEvolutionCount = new int[]{0,0};
+        if (minEvolutionCount == 0) {
+            return oldNewEvolutionCount;
+        }
 
+        int basicCount = pokemonCount[0];
         int newEvolutions = 0;
+
         for (int i = 1; i <= minEvolutionCount; i ++) {
             newEvolutions += (inPokedex[i]) ? 0 : 1;
         }

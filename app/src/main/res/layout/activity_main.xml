@@ -9,8 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/windowBackground">
+        android:layout_height="match_parent">
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -122,19 +121,6 @@
           android:visibility="gone"/>
 
     </RelativeLayout>
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/launch_screen"-->
-        <!--android:background="@color/windowBackground">-->
-        <!---->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" -->
-            <!--android:text="Main Message"/>-->
-        <!---->
-    <!--</RelativeLayout>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonCalculate"

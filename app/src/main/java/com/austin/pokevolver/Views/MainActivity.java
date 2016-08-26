@@ -15,9 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.austin.pokevolver.Adapters.VariableAdapter;
-import com.austin.pokevolver.Helpers.DatabaseHelper;
 import com.austin.pokevolver.Listeners.PokemonQueryListener;
-import com.austin.pokevolver.Models.DataBase;
 import com.austin.pokevolver.Models.EquationModel;
 import com.austin.pokevolver.R;
 
@@ -48,8 +46,6 @@ public class MainActivity extends AppCompatActivity{
 
         VariableAdapter variableAdapter = new VariableAdapter(this, R.layout.layout_variable_row, EquationModel.variables);
         listOfVariables.setAdapter(variableAdapter);
-
-        //TODO improve banner UI
     }
 
     @Override

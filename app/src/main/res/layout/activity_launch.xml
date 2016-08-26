@@ -1,38 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
     android:fitsSystemWindows="true"
-    tools:context="com.austin.pokevolver.Views.LaunchActivity"
-    android:background="@color/windowBackground">
+    tools:context="com.austin.pokevolver.Views.LaunchActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/launch_message"
-        android:layout_centerVertical="true"
+        android:text="@string/launch_title"
+        android:id="@+id/launch_title"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/launch_body"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView"
-        android:gravity="center" />
+        android:layout_marginBottom="22dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/launch_message"
+        android:id="@+id/launch_body"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_start"
-        android:layout_above="@+id/linearLayout"
+        android:scaleType="center"
+        android:src="@drawable/pokeball"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
         android:id="@+id/linearLayout"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_below="@+id/launch_body"
+        android:layout_alignStart="@+id/launch_body"
+        android:layout_marginTop="22dp">
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -44,5 +59,16 @@
             android:layout_height="wrap_content"
             android:text="@string/preference"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="By Austin®"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/suggestions"/>
 
 </RelativeLayout>

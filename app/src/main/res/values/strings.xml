@@ -11,8 +11,11 @@
     <string name="exp">Experience With Egg</string>
     <string name="default_value">0</string>
     <string name="preference">Do not display this message again</string>
+    <string name="launch_title">This app assume a few things:</string>
     <string name="launch_message">
-        Assumes that any pokemon counted can be transferred.\n
-        Evolving to the stage that requires least amount of candies
+        1) Any pokemon counted, can be transferred\n\n
+        2) Evolve to the stage requiring minimum candies\n\n
+        3) Evolve into an unseen pokemon when possible\n\n
+        4) When transferring, do so optimally
     </string>
 </resources>

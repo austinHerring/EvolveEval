@@ -1,13 +1,11 @@
 package com.austin.pokevolver.Views;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.austin.pokevolver.Helpers.DatabaseHelper;
@@ -16,7 +14,7 @@ import com.austin.pokevolver.R;
 
 public class LaunchActivity extends AppCompatActivity {
 
-    private Button mButtonStart;
+    private FloatingActionButton mButtonStart;
     private CheckBox mLaunchPreference;
 
     @Override
@@ -24,27 +22,30 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DataBase.db = new DatabaseHelper(this);
         if (DataBase.db.hideLaunch()) {
-            start();
+            start(true);
         }
 
-        //TODO Double Check this logic for preferences
         setContentView(R.layout.activity_launch);
         mLaunchPreference = (CheckBox) findViewById(R.id.launch_preference);
-        mButtonStart = (Button) findViewById(R.id.button_start);
+        mButtonStart = (FloatingActionButton) findViewById(R.id.button_start);
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mLaunchPreference.isChecked()) {
                     DataBase.db.setHideLaunchPreference();
                 }
-                start();
+                start(false);
             }
         });
     }
 
-    private void start() {
+    private void start(boolean direct) {
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        if (direct) {
+            startActivity(intent);
+        } else {
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
         finish();
     }
 
