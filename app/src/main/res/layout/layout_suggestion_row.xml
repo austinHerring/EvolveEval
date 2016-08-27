@@ -10,14 +10,13 @@
         android:maxHeight="64dp"
         android:maxWidth="64dp"
         android:id="@+id/pokemonIcon"
-        android:adjustViewBounds="true"
-        android:src="@drawable/bulbasaur"/>
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/pokemonName"
         android:layout_gravity="center_vertical" />
 </LinearLayout>
