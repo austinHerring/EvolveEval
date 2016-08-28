@@ -2,6 +2,8 @@ package com.austin.pokevolver.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
  *
  * Formats the list of variables - to be used in the equation model - into an easy to use UI
  */
+//TODO The user screen does not fit everything
+//TODO The animation flickers from launch screen
 public class VariableAdapter extends ArrayAdapter<VariableModel> {
 
     private ArrayList<VariableModel> listOfvariables;
@@ -89,13 +93,24 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
                 pokedex_checkboxes[i].setChecked(variable.getInPokedex(i));
                 final int iListener = i;
 
-                pokemon_counts[i].setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                pokemon_counts[i].addTextChangedListener(new TextWatcher() {
+
                     @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        String text = pokemon_counts[iListener].getText().toString();
-                        if(!hasFocus && !text.equals("")) {
-                            variable.setPokemonCount(iListener, Integer.parseInt(text));
-                        }
+                    public void afterTextChanged(Editable s) {
+                        variable.setPokemonCount(iListener,
+                                (s.toString().equals("")) ? 0 : Integer.parseInt(s.toString()));
+                    }
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start,
+                                                  int count, int after) {
+                        // No logic
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start,
+                                              int before, int count) {
+                        // No logic
                     }
                 });
 
@@ -148,13 +163,23 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
             });
 
             holder.candy_count.setText(variable.getCandyCountText());
-            holder.candy_count.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            holder.candy_count.addTextChangedListener(new TextWatcher() {
+
                 @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    String text = holder.candy_count.getText().toString();
-                    if(!hasFocus && !text.equals("")) {
-                        variable.setCandyCount(Integer.parseInt(text));
-                    }
+                public void afterTextChanged(Editable s) {
+                        variable.setCandyCount((s.toString().equals("")) ? 0 : Integer.parseInt(s.toString()));
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                    // No logic
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start,
+                                          int before, int count) {
+                    // No logic
                 }
             });
 

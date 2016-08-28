@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -28,6 +29,7 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
         mLaunchPreference = (CheckBox) findViewById(R.id.launch_preference);
         mButtonStart = (FloatingActionButton) findViewById(R.id.button_start);
+        getWindow().setExitTransition(new Fade());
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,13 +42,14 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void start(boolean direct) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(LaunchActivity.this, MainActivity.class);;
         if (direct) {
             startActivity(intent);
         } else {
-            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                    LaunchActivity.this, mButtonStart, "transitionElement");
+            startActivity(intent, options.toBundle());
         }
-        finish();
     }
 
 }

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:id="@+id/pokemon_table"
         android:padding="10dp"
-        android:stretchColumns="4">
+        android:stretchColumns="2">
 
         <TableRow >
             <ImageView
@@ -32,7 +32,7 @@
             <EditText
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="65dp"
+                android:minWidth="65dp"
                 android:id="@+id/candy_count"
                 android:layout_gravity="center_vertical"
                 android:inputType="number"
@@ -46,10 +46,6 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/in_pokedex"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
             <ImageButton
                 android:layout_height="30dp"
                 android:layout_width="30dp"

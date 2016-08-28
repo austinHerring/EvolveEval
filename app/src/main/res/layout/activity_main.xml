@@ -129,6 +129,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/colorPrimary"
+        android:transitionName="transitionElement"
         android:src="@drawable/calculate"/>
 
 </android.support.design.widget.CoordinatorLayout>

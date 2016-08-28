@@ -57,7 +57,8 @@ public class PokemonQueryListener implements SearchView.OnQueryTextListener {
                             activity,
                             R.layout.layout_suggestion_row,
                             queriedPokemon,
-                            activity.menu
+                            activity.menu,
+                            query
                     );
 
             activity.listOfSuggestions.setAdapter(adapter);

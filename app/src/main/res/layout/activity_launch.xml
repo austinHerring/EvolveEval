@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_start"
         android:scaleType="center"
+        android:transitionName="transitionElement"
         android:src="@drawable/pokeball"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

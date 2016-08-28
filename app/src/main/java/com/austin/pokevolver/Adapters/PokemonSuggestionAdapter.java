@@ -2,6 +2,11 @@ package com.austin.pokevolver.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +25,7 @@ import com.austin.pokevolver.R;
 import com.austin.pokevolver.Models.VariableModel;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * @author Austin Herring
@@ -34,11 +40,13 @@ public class PokemonSuggestionAdapter extends ArrayAdapter<PokemonModel> {
     private static LayoutInflater inflater = null;
     private MainActivity activity;
     private MenuItem searchView;
+    private String query;
 
-    public PokemonSuggestionAdapter(Activity activity, int textViewResourceId, ArrayList<PokemonModel> suggestions, Menu menu) {
+    public PokemonSuggestionAdapter(Activity activity, int textViewResourceId, ArrayList<PokemonModel> suggestions, Menu menu, String query) {
         super(activity, textViewResourceId, suggestions);
         this.activity = (MainActivity) activity;
         this.searchView = menu.findItem(R.id.search);
+        this.query = query;
         listOfSuggestions = suggestions;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mtextViewResourceId = textViewResourceId;
@@ -62,8 +70,27 @@ public class PokemonSuggestionAdapter extends ArrayAdapter<PokemonModel> {
             } else {
                 holder = (ViewHolder) v.getTag();
             }
+
             holder.display_info = (TextView) v.findViewById(R.id.pokemonName);
-            holder.display_info.setText(pokemon.getName());
+            String name = pokemon.getName();
+            int startPos = name.toLowerCase(Locale.US).indexOf(query.toLowerCase(Locale.US));
+            int endPos = startPos + query.length();
+
+            if (startPos != -1) {
+                Spannable spannable = new SpannableString(name);
+                ColorStateList highlightColor =
+                        new ColorStateList(
+                                new int[][]{new int[]{}},
+                                new int[]{activity.getResources().getColor(R.color.colorAccent)}
+                        );
+                TextAppearanceSpan highlightSpan =
+                        new TextAppearanceSpan(null, Typeface.BOLD, -1, highlightColor, null);
+
+                spannable.setSpan(highlightSpan, startPos, endPos, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.display_info.setText(spannable);
+            } else {
+                holder.display_info.setText(pokemon.getName());
+            }
 
             holder.display_icon = (ImageView) v.findViewById(R.id.pokemonIcon);
             holder.display_icon.setImageURI(pokemon.getIcon());
