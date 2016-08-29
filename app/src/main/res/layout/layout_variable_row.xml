@@ -5,202 +5,198 @@
     android:layout_width="match_parent"
     android:weightSum="1"
     android:gravity="center_horizontal"
-    android:background="@drawable/variable_background">
+    android:background="@drawable/variable_background"
+    android:orientation="vertical">
 
-    <TableLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/pokemon_table"
-        android:padding="10dp"
-        android:stretchColumns="2">
+        android:layout_height="wrap_content">
 
-        <TableRow >
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxWidth="25dp"
-                android:maxHeight="25dp"
-                android:layout_gravity="center"
-                android:id="@+id/candy_icon"/>
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_vertical"
-                android:text="@string/candies" />
-            <EditText
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:minWidth="65dp"
-                android:id="@+id/candy_count"
-                android:layout_gravity="center_vertical"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/in_pokedex"/>
-            <ImageButton
-                android:layout_height="30dp"
-                android:layout_width="30dp"
-                android:background="@null"
-                android:scaleType="fitXY"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="top|right"
-                android:src="@drawable/cancel"
-                android:id="@+id/remove_variable"
-                android:gravity="top|right" />
-        </TableRow>
+        <ImageButton
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="7dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/cancel"
+            android:id="@+id/remove_variable" />
 
-        <TableRow android:id="@+id/row1">
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxWidth="64dp"
-                android:maxHeight="64dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:id="@+id/pokemon_icon1"/>
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/pokemon_name1"/>
-            <EditText
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="65dp"
-                android:layout_gravity="center_vertical"
-                android:inputType="number"
-                android:id="@+id/pokemon_count1"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:maxWidth="65dp"/>
-            <CheckBox
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center"
-                android:id="@+id/pokedex_checkbox1" />
-        </TableRow>
+        <TableLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon_table"
+            android:padding="10dp"
+            android:stretchColumns="2">
 
-        <TableRow
-            android:id="@+id/row2"
-            android:visibility="gone">
+            <TableRow >
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:maxWidth="25dp"
+                    android:maxHeight="25dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/candy_icon"
+                    android:src="@drawable/abra_candy"/>
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/candies" />
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:minWidth="65dp"
+                    android:id="@+id/candy_count"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/in_pokedex"/>
+            </TableRow>
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxWidth="64dp"
-                android:maxHeight="64dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:id="@+id/pokemon_icon2"/>
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/pokemon_name2"/>
-            <EditText
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="65dp"
-                android:layout_gravity="center_vertical"
-                android:inputType="number"
-                android:id="@+id/pokemon_count2"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:maxWidth="65dp"/>
-            <CheckBox
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center"
-                android:id="@+id/pokedex_checkbox2" />
-        </TableRow>
+            <TableRow android:id="@+id/row1">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:maxWidth="64dp"
+                    android:maxHeight="64dp"
+                    android:id="@+id/pokemon_icon1"
+                    android:src="@drawable/abra"/>
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/pokemon_name1"/>
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="65dp"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:id="@+id/pokemon_count1"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:maxWidth="65dp"/>
+                <CheckBox
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pokedex_checkbox1"
+                    android:checked="false" />
+            </TableRow>
 
-        <TableRow
-            android:id="@+id/row3"
-            android:visibility="gone">
+            <TableRow
+                android:id="@+id/row2"
+                android:visibility="gone">
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxWidth="64dp"
-                android:maxHeight="64dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:id="@+id/pokemon_icon3"/>
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/pokemon_name3"/>
-            <EditText
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="65dp"
-                android:layout_gravity="center_vertical"
-                android:inputType="number"
-                android:id="@+id/pokemon_count3"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:maxWidth="65dp"/>
-            <CheckBox
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center"
-                android:id="@+id/pokedex_checkbox3" />
-        </TableRow>
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:maxWidth="64dp"
+                    android:maxHeight="64dp"
+                    android:id="@+id/pokemon_icon2"/>
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/pokemon_name2"/>
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="65dp"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:id="@+id/pokemon_count2"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:maxWidth="65dp"/>
+                <CheckBox
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pokedex_checkbox2" />
+            </TableRow>
 
-        <TableRow
-            android:id="@+id/row4"
-            android:visibility="gone">
+            <TableRow
+                android:id="@+id/row3"
+                android:visibility="gone">
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:maxWidth="64dp"
-                android:maxHeight="64dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:id="@+id/pokemon_icon4"/>
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/pokemon_name4"/>
-            <EditText
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="65dp"
-                android:layout_gravity="center_vertical"
-                android:inputType="number"
-                android:id="@+id/pokemon_count4"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:maxWidth="65dp"/>
-            <CheckBox
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center"
-                android:id="@+id/pokedex_checkbox4" />
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:maxWidth="64dp"
+                    android:maxHeight="64dp"
+                    android:id="@+id/pokemon_icon3"/>
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/pokemon_name3"/>
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="65dp"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:id="@+id/pokemon_count3"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:maxWidth="65dp"/>
+                <CheckBox
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pokedex_checkbox3" />
+            </TableRow>
 
-        </TableRow>
-    </TableLayout>
+            <TableRow
+                android:id="@+id/row4"
+                android:visibility="gone">
+
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:maxWidth="64dp"
+                    android:maxHeight="64dp"
+                    android:id="@+id/pokemon_icon4"/>
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/pokemon_name4"/>
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="65dp"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="number"
+                    android:id="@+id/pokemon_count4"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:maxWidth="65dp"/>
+                <CheckBox
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pokedex_checkbox4" />
+
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
 
 
 </LinearLayout>

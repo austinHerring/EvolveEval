@@ -30,8 +30,6 @@ import java.util.ArrayList;
  *
  * Formats the list of variables - to be used in the equation model - into an easy to use UI
  */
-//TODO The user screen does not fit everything
-//TODO The animation flickers from launch screen
 public class VariableAdapter extends ArrayAdapter<VariableModel> {
 
     private ArrayList<VariableModel> listOfvariables;

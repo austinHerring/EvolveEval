@@ -1,21 +1,19 @@
 <resources>
-    <string name="app_name">Pokevolver</string>
-    <string name="hint_search">Search Pokemon</string>
+    <string name="app_name">Pokévolver</string>
+    <string name="hint_search">Search Pokémon</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_pokemon_search">Pokemon Search Activity</string>
+    <string name="title_activity_pokemon_search">Pokémon Search Activity</string>
     <string name="title_activity_launch">Launch Activity</string>
-    <string name="in_pokedex">Pokedex?</string>
+    <string name="in_pokedex">Pokédex</string>
     <string name="candies">Candies</string>
-    <string name="transfer_option">Transfer pokemon while evolving</string>
+    <string name="transfer_option">Transfer pokémon while evolving</string>
     <string name="evolutions">Evolutions</string>
     <string name="exp">Experience With Egg</string>
     <string name="default_value">0</string>
     <string name="preference">Do not display this message again</string>
-    <string name="launch_title">This app assume a few things:</string>
-    <string name="launch_message">
-        1) Any pokemon counted, can be transferred\n\n
-        2) Evolve to the stage requiring minimum candies\n\n
-        3) Evolve into an unseen pokemon when possible\n\n
-        4) When transferring, do so optimally
-    </string>
+    <string name="launch_title">This App Assumes a Few Things</string>
+    <string name="launch_message1">Count pokémon that can be transferred</string>
+    <string name="launch_message2">Evolve to the stage requiring minimum candies</string>
+    <string name="launch_message3">Evolve into an unseen pokemon when possible</string>
+    <string name="launch_message4">When transferring, do so optimally</string>
 </resources>

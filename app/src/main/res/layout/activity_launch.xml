@@ -7,38 +7,60 @@
     android:fitsSystemWindows="true"
     tools:context="com.austin.pokevolver.Views.LaunchActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/launch_title"
-        android:id="@+id/launch_title"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/launch_body"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/launch_message"
-        android:id="@+id/launch_body"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_start"
-        android:scaleType="center"
-        android:transitionName="transitionElement"
-        android:src="@drawable/pokeball"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_title"
+            android:id="@+id/launch_title"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_message1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:background="@drawable/variable_background"/>
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_message2"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:background="@drawable/variable_background"/>
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_message3"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:background="@drawable/variable_background"/>
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_message4"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:background="@drawable/variable_background"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,9 +68,9 @@
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
         android:gravity="center"
-        android:layout_below="@+id/launch_body"
-        android:layout_alignStart="@+id/launch_body"
-        android:layout_marginTop="22dp">
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/button_start"
+        android:layout_alignParentBottom="true">
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -60,6 +82,17 @@
             android:layout_height="wrap_content"
             android:text="@string/preference"/>
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_start"
+        android:scaleType="center"
+        android:transitionName="transitionElement"
+        android:src="@drawable/pokeball"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
     <TextView
         android:layout_width="wrap_content"
