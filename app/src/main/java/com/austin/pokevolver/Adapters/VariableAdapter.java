@@ -46,6 +46,7 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
     }
 
     public static class ViewHolder {
+        public long id;
         public ImageView candy_icon;
         public EditText candy_count;
         public ImageButton remove;
@@ -95,20 +96,23 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        variable.setPokemonCount(iListener,
-                                (s.toString().equals("")) ? 0 : Integer.parseInt(s.toString()));
+                        //String text = pokemon_counts[iListener].getText().toString();
+                        if (variable.getId() == id && !s.toString().equals("")) {
+                            variable.setPokemonCount(iListener, Integer.parseInt(s.toString()));
+                        }
                     }
 
                     @Override
-                    public void beforeTextChanged(CharSequence s, int start,
-                                                  int count, int after) {
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                         // No logic
                     }
 
                     @Override
-                    public void onTextChanged(CharSequence s, int start,
-                                              int before, int count) {
-                        // No logic
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        //String text = pokemon_counts[iListener].getText().toString();
+                        if (variable.getId() == id && s.length() == 0 && before == 1 && s.equals("")) {
+                            variable.setPokemonCount(iListener, 0);
+                        }
                     }
                 });
 
@@ -146,6 +150,7 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
             }
 
             holder.linkHolder(v);
+            holder.id = variable.getId();
 
             holder.candy_icon.setImageURI(variable.getCandyIcon());
             holder.remove.setOnClickListener(new View.OnClickListener() {
@@ -165,19 +170,23 @@ public class VariableAdapter extends ArrayAdapter<VariableModel> {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                        variable.setCandyCount((s.toString().equals("")) ? 0 : Integer.parseInt(s.toString()));
+                    //String text = holder.candy_count.getText().toString();
+                    if (variable.getId() == holder.id && !s.toString().equals("")) {
+                        variable.setCandyCount(Integer.parseInt(s.toString()));
+                    }
                 }
 
                 @Override
-                public void beforeTextChanged(CharSequence s, int start,
-                                              int count, int after) {
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                     // No logic
                 }
 
                 @Override
-                public void onTextChanged(CharSequence s, int start,
-                                          int before, int count) {
-                    // No logic
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    //String text = holder.candy_count.getText().toString();
+                    if (variable.getId() == holder.id && before == 1 && s.length() == 0 && s.equals("")) {
+                        variable.setCandyCount(0);
+                    }
                 }
             });
 

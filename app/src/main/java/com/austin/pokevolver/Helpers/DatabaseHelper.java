@@ -122,12 +122,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean updatePokemon(String name, int inPokedex) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_2 + "= '" + name + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_6 + "= '" + name + "'", null);
         if (cursor.getCount() == 1) {
             cursor.moveToNext();
             ContentValues contentValues = new ContentValues();
             contentValues.put(COL_1, cursor.getString(DataBase.ID));
-            contentValues.put(COL_2, name);
+            contentValues.put(COL_2, cursor.getString(DataBase.NAME));
             contentValues.put(COL_3, cursor.getInt(DataBase.CANDIES_TO_EVOLVE));
             contentValues.put(COL_4, cursor.getInt(DataBase.EVOLUTION_ID));
             contentValues.put(COL_5, inPokedex);
@@ -136,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put(COL_8, cursor.getInt(DataBase.EVOLUTION_INDEX));
             contentValues.put(COL_9, cursor.getInt(DataBase.MIN_EVOLUTION));
             cursor.close();
-            return db.update(TABLE_NAME, contentValues, COL_2 + " = ?", new String[] { name }) > 0;
+            return db.update(TABLE_NAME, contentValues, COL_6 + " = ?", new String[] { name }) > 0;
         }
         return false;
     }

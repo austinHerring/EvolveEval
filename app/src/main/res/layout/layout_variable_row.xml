@@ -75,7 +75,8 @@
                     android:textColor="@color/black"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_gravity="center_vertical"
-                    android:id="@+id/pokemon_name1"/>
+                    android:id="@+id/pokemon_name1"
+                    android:text="Farfetch'd"/>
                 <EditText
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"

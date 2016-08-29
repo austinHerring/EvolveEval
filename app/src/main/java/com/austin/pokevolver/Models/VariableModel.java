@@ -133,7 +133,7 @@ public class VariableModel {
 
     public void setInPokedex(int stage, boolean inPokedex) {
         this.inPokedex[stage] = inPokedex;
-        DataBase.db.updatePokemon(pokemonNames[stage], (inPokedex) ? 1 : 0);
+        DataBase.db.updatePokemon(pokemonIcons[stage].toString(), (inPokedex) ? 1 : 0);
     }
 
     public void setCandyCount(int candyCount) {
