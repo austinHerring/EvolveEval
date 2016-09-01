@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
     android:fitsSystemWindows="true"
-    tools:context="com.austin.pokevolver.Views.LaunchActivity">
+    tools:context="com.austin.evolveeval.Views.LaunchActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

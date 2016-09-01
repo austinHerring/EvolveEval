@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pokévolver</string>
+    <string name="app_name">EvolveEval</string>
     <string name="hint_search">Search Pokémon</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_pokemon_search">Pokémon Search Activity</string>
